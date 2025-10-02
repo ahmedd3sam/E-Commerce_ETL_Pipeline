@@ -13,6 +13,9 @@ properties = {
     "password": "external",
     "driver": "org.postgresql.Driver"
 }
+spark.conf.set("parquet.enable.dictionary", "false")
+spark.conf.set("spark.sql.parquet.writeLegacyFormat", "true")
+spark.conf.set("spark.sql.parquet.writeLegacyTimestamp", "true")
 
 customer_df = spark.read.jdbc(url=url, table="customer", properties=properties)
 product_df = spark.read.jdbc(url=url, table="product", properties=properties)
